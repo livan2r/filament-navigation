@@ -4,7 +4,9 @@ return [
     'attributes' => [
         'external-link' => 'External link',
         'url' => 'URL',
+        'url-helper' => 'The URL that the navigation item will link to.',
         'target' => 'Target',
+        'target-helper' => 'Select where the link should be opened.',
         'name' => 'Name',
         'items' => 'Items',
         'handle' => 'Handle',
@@ -31,9 +33,11 @@ return [
     ],
 
     'items-modal' => [
-        'title' => 'Item',
+        'title' => 'Navigation Item',
         'label' => 'Label',
+        'label-helper' => 'The text that will be displayed in the navigation.',
         'type' => 'Type',
+        'type-helper' => 'Select the item type to configure it accordingly.',
         'btn' => 'Save',
     ],
 ];

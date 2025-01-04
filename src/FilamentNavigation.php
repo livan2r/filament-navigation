@@ -103,10 +103,17 @@ class FilamentNavigation implements Plugin
                     'name' => __('filament-navigation::filament-navigation.attributes.external-link'),
                     'fields' => [
                         TextInput::make('url')
+                            ->prefixIcon('heroicon-o-globe-alt')
+                            ->prefixIconColor('secondary')
                             ->label(__('filament-navigation::filament-navigation.attributes.url'))
+                            ->helperText(__('filament-navigation::filament-navigation.attributes.url-helper'))
+                            ->activeUrl()
                             ->required(),
                         Select::make('target')
+                            ->prefixIcon('heroicon-o-cursor-arrow-rays')
+                            ->prefixIconColor('secondary')
                             ->label(__('filament-navigation::filament-navigation.attributes.target'))
+                            ->helperText(__('filament-navigation::filament-navigation.attributes.target-helper'))
                             ->options([
                                 '' => __('filament-navigation::filament-navigation.select-options.same-tab'),
                                 '_blank' => __('filament-navigation::filament-navigation.select-options.new-tab'),

@@ -83,10 +83,16 @@ trait HandlesNavigationBuilder
                 ->view('filament-navigation::hidden-action')
                 ->form([
                     TextInput::make('label')
+                        ->prefixIcon('heroicon-o-tag')
+                        ->prefixIconColor('secondary')
                         ->label(__('filament-navigation::filament-navigation.items-modal.label'))
+                        ->helperText(__('filament-navigation::filament-navigation.items-modal.label-helper'))
                         ->required(),
                     Select::make('type')
                         ->label(__('filament-navigation::filament-navigation.items-modal.type'))
+                        ->prefixIcon('heroicon-o-cursor-arrow-rays')
+                        ->prefixIconColor('secondary')
+                        ->helperText(__('filament-navigation::filament-navigation.items-modal.type-helper'))
                         ->options(function () {
                             $types = FilamentNavigation::get()->getItemTypes();
 
