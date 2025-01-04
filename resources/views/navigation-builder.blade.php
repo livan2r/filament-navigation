@@ -31,7 +31,7 @@
     </div>
 
     <div class="flex justify-end">
-        <x-filament::button wire:click="createItem" type="button" size="sm">
+        <x-filament::button wire:click="createItem" type="button" size="sm" icon="heroicon-o-plus">
             {{__('filament-navigation::filament-navigation.items.add-item')}}
         </x-filament::button>
     </div>
