@@ -150,7 +150,8 @@ trait HandlesNavigationBuilder
                     $this->mountedActionData = [];
                 })
                 ->modalButton(__('filament-navigation::filament-navigation.items-modal.btn'))
-                ->label(__('filament-navigation::filament-navigation.items-modal.title')),
+                ->label(__('filament-navigation::filament-navigation.items-modal.title'))
+                ->slideOver(),
         ];
     }
 }

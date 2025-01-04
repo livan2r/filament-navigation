@@ -21,6 +21,7 @@ return [
     'items' => [
         'empty' => 'No items.',
         'add-item' => 'Add item',
+        'edit' => 'Edit',
         'add-child' => 'Add child',
         'move-up' => 'Move up',
         'move-down' => 'Move down',
