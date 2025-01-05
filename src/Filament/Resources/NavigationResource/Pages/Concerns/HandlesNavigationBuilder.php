@@ -157,6 +157,7 @@ trait HandlesNavigationBuilder
                 })
                 ->modalButton(__('filament-navigation::filament-navigation.items-modal.btn'))
                 ->label(__('filament-navigation::filament-navigation.items-modal.title'))
+                ->modalIcon('heroicon-o-pencil-square')
                 ->slideOver(),
         ];
     }
