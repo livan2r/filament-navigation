@@ -4,7 +4,9 @@ return [
     'attributes' => [
         'external-link' => 'Vínculo externo',
         'url' => 'URL',
+        'url-helper' => 'La URL a la que se vinculará el ítem de navegación.',
         'target' => 'Destino',
+        'target-helper' => 'Seleccione dónde se debe abrir el vínculo.',
         'name' => 'Nombre',
         'items' => 'Ítems',
         'handle' => 'Referencia',
@@ -31,9 +33,11 @@ return [
     ],
 
     'items-modal' => [
-        'title' => 'Ítem',
+        'title' => 'Ítem de navegación',
         'label' => 'Etiqueta',
+        'label-helper' => 'El texto que se mostrará en la navegación.',
         'type' => 'Tipo',
+        'type-helper' => 'Seleccione el tipo de ítem para configurarlo apropiadamente.',
         'btn' => 'Guardar',
     ],
 ];
