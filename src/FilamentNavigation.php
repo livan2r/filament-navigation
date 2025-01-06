@@ -2,6 +2,8 @@
 
 namespace RyanChandler\FilamentNavigation;
 
+use App\Models\Page;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Forms\Components\Select;
@@ -120,6 +122,57 @@ class FilamentNavigation implements Plugin
                             ])
                             ->default('')
                             ->selectablePlaceholder(false),
+                    ],
+                ],
+            ],
+            // FIXME: Translations doesn't work for these options
+            [
+                'page' => [
+                    'name' => __('admin.page.singular'),
+                    'fields' => [
+                        Select::make('page_id')
+                            ->label(__('admin.navigation.page.label'))
+                            ->helperText(__('admin.navigation.page.desc'))
+                            ->prefixIcon('heroicon-o-cursor-arrow-rays')
+                            ->prefixIconColor('secondary')
+                            ->searchable()
+                            ->preload()
+                            ->native(false)
+                            ->required()
+                            ->options(Page::where('enabled', true)->pluck('name', 'id')),
+                        Select::make('page_target')
+                            ->label(__('admin.navigation.target.label'))
+                            ->helperText(__('admin.navigation.target.desc'))
+                            ->prefixIcon('heroicon-o-cursor-arrow-rays')
+                            ->prefixIconColor('secondary')
+                            ->options([
+                                '' => __('admin.navigation.target.same-tab'),
+                                '_blank' => __('admin.navigation.target.new-tab'),
+                            ])
+                            ->default('')
+                            ->selectablePlaceholder(false)
+                    ],
+                ]
+            ],
+            [
+                'mega-menu' => [
+                    'name' => __('admin.navigation.mega_menu.label'),
+                    'fields' => [
+                        Select::make('mega_menu')
+                            ->label(__('admin.navigation.mega_menu.label'))
+                            ->prefixIcon('heroicon-o-cursor-arrow-rays')
+                            ->prefixIconColor('secondary')
+                            ->helperText(__('admin.navigation.mega_menu.desc'))
+                            ->default('three_columns')
+                            ->preload()
+                            ->native(false)
+                            ->options(__('admin.navigation.mega_menu.options')),
+                        CuratorPicker::make('image')
+                            ->label(__('admin.navigation.image.label'))
+                            ->helperText(__('admin.navigation.image.desc'))
+                            ->color('primary')
+                            ->outlined(false)
+                            ->constrained(),
                     ],
                 ],
             ],
