@@ -175,13 +175,13 @@ class FilamentNavigation implements Plugin
                             ->native(false)
                             ->required()
                             ->options(Page::where('enabled', true)->pluck('name', 'id')),
-                        Select::make('page_target')
+                        Select::make('target')
                             ->label(__('admin.navigation.target.label'))
                             ->helperText(__('admin.navigation.target.desc'))
                             ->prefixIcon('heroicon-o-cursor-arrow-rays')
                             ->prefixIconColor('secondary')
                             ->options([
-                                '' => __('admin.navigation.target.same-tab'),
+                                '_self' => __('admin.navigation.target.same-tab'),
                                 '_blank' => __('admin.navigation.target.new-tab'),
                             ])
                             ->default('')
@@ -198,7 +198,7 @@ class FilamentNavigation implements Plugin
                             ->prefixIcon('heroicon-o-cursor-arrow-rays')
                             ->prefixIconColor('secondary')
                             ->helperText(__('admin.navigation.mega_menu.desc'))
-                            ->default('three_columns')
+                            ->default('')
                             ->preload()
                             ->native(false)
                             ->options(__('admin.navigation.mega_menu.options')),
