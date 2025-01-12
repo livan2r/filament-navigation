@@ -18,7 +18,9 @@ trait HandlesNavigationBuilder
 {
     public $mountedItem;
 
-    public $mountedItemData = [];
+    public array $mountedItemData = [];
+
+    public array $mountedActionData = [];
 
     public $mountedChildTarget;
 
@@ -64,7 +66,7 @@ trait HandlesNavigationBuilder
     public function createItem()
     {
         $this->mountedItem = null;
-        $this->mountedItemData = [];
+        $this->mountedItemData = FilamentNavigation::get()->getNewItemData();
         $this->mountedActionData = [];
 
         $this->mountAction('item');
@@ -75,7 +77,7 @@ trait HandlesNavigationBuilder
         return [
             Action::make('item')
                 ->mountUsing(function (ComponentContainer $form) {
-                    if (! $this->mountedItem) {
+                    if (! $this->mountedItem && empty($this->mountedItemData)) {
                         return;
                     }
 
@@ -113,6 +115,7 @@ trait HandlesNavigationBuilder
                                 ->getChildComponentContainer()
                                 ->fill();
                         })
+                        ->required()
                         ->reactive(),
                     Group::make()
                         ->statePath('data')

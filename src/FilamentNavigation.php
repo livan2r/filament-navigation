@@ -22,6 +22,8 @@ class FilamentNavigation implements Plugin
 
     protected array $itemTypes = [];
 
+    protected array $newItems = [];
+
     protected array | Closure $extraFields = [];
 
     public function getId(): string
@@ -58,6 +60,13 @@ class FilamentNavigation implements Plugin
     public function withExtraFields(array | Closure $schema): static
     {
         $this->extraFields = $schema;
+
+        return $this;
+    }
+
+    public function withNewItems(array $items): static
+    {
+        $this->newItems = $items;
 
         return $this;
     }
@@ -102,19 +111,22 @@ class FilamentNavigation implements Plugin
                     ->helperText(__('admin.navigation.visible.desc'))
                     ->onIcon('heroicon-o-check')
                     ->offIcon('heroicon-o-x-mark')
-                    ->default(true),
+                    ->default(true)
+                    ->required(),
                 Toggle::make('enabled')
                     ->label(__('admin.navigation.enabled.label'))
                     ->helperText(__('admin.navigation.enabled.desc'))
                     ->onIcon('heroicon-o-check')
                     ->offIcon('heroicon-o-x-mark')
-                    ->default(true),
+                    ->default(true)
+                    ->required(),
                 Toggle::make('hot')
                     ->label(__('admin.navigation.hot.label'))
                     ->helperText(__('admin.navigation.hot.desc'))
                     ->onIcon('heroicon-o-check')
                     ->offIcon('heroicon-o-x-mark')
-                    ->default(false),
+                    ->default(false)
+                    ->required(),
             ],
             ...$this->extraFields
         ];
@@ -201,5 +213,23 @@ class FilamentNavigation implements Plugin
             ],
             $this->itemTypes
         );
+    }
+
+    /**
+     * New Item Data initialization
+     *
+     * @return array
+     */
+    public function getNewItemData(): array
+    {
+        return array_merge([
+            'label' => __('admin.navigation.new_item'),
+            'type' => null,
+            'data' => [
+                'visible' => true,
+                'enabled' => true,
+                'hot' => false,
+            ],
+        ], $this->newItems);
     }
 }
