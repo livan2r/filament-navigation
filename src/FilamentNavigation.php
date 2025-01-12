@@ -8,6 +8,7 @@ use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Panel;
 use Illuminate\Support\Str;
 use RyanChandler\FilamentNavigation\Filament\Resources\NavigationResource;
@@ -94,7 +95,29 @@ class FilamentNavigation implements Plugin
 
     public function getExtraFields(): array | Closure
     {
-        return $this->extraFields;
+        return [
+            ...[
+                Toggle::make('visible')
+                    ->label(__('admin.navigation.visible.label'))
+                    ->helperText(__('admin.navigation.visible.desc'))
+                    ->onIcon('heroicon-o-check')
+                    ->offIcon('heroicon-o-x-mark')
+                    ->default(true),
+                Toggle::make('enabled')
+                    ->label(__('admin.navigation.enabled.label'))
+                    ->helperText(__('admin.navigation.enabled.desc'))
+                    ->onIcon('heroicon-o-check')
+                    ->offIcon('heroicon-o-x-mark')
+                    ->default(true),
+                Toggle::make('hot')
+                    ->label(__('admin.navigation.hot.label'))
+                    ->helperText(__('admin.navigation.hot.desc'))
+                    ->onIcon('heroicon-o-check')
+                    ->offIcon('heroicon-o-x-mark')
+                    ->default(false),
+            ],
+            ...$this->extraFields
+        ];
     }
 
     public function getItemTypes(): array
