@@ -3,6 +3,7 @@
 namespace RyanChandler\FilamentNavigation;
 
 use App\Models\Page;
+use App\Services\Page\Page as PageService;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Closure;
 use Filament\Contracts\Plugin;
@@ -174,7 +175,7 @@ class FilamentNavigation implements Plugin
                             ->preload()
                             ->native(false)
                             ->required()
-                            ->options(Page::where('enabled', true)->pluck('name', 'id')),
+                            ->options(PageService::make()->getRoutes()),
                         Select::make('target')
                             ->label(__('admin.navigation.target.label'))
                             ->helperText(__('admin.navigation.target.desc'))
