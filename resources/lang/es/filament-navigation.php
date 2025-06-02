@@ -10,6 +10,7 @@ return [
         'name' => 'Nombre',
         'items' => 'Ítems',
         'handle' => 'Referencia',
+        'type' => 'Typo de Menu',
         'created_at' => 'Creado',
         'updated_at' => 'Actualizado',
 

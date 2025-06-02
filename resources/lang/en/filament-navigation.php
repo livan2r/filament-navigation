@@ -10,6 +10,7 @@ return [
         'name' => 'Name',
         'items' => 'Items',
         'handle' => 'Handle',
+        'type' => 'Menu type',
         'created_at' => 'Created at',
         'updated_at' => 'Updated at',
 
