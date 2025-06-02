@@ -107,6 +107,13 @@ class FilamentNavigation implements Plugin
     {
         return [
             ...[
+                Toggle::make('separator')
+                    ->label(__('admin.navigation.separator.label'))
+                    ->helperText(__('admin.navigation.separator.desc'))
+                    ->onIcon('heroicon-o-check')
+                    ->offIcon('heroicon-o-x-mark')
+                    ->default(false)
+                    ->required(),
                 Toggle::make('visible')
                     ->label(__('admin.navigation.visible.label'))
                     ->helperText(__('admin.navigation.visible.desc'))
@@ -121,6 +128,16 @@ class FilamentNavigation implements Plugin
                     ->offIcon('heroicon-o-x-mark')
                     ->default(true)
                     ->required(),
+                TextInput::make('shortcut')
+                    ->prefixIcon('heroicon-o-tag')
+                    ->prefixIconColor('secondary')
+                    ->label(__('admin.navigation.shortcut.label'))
+                    ->helperText(__('admin.navigation.shortcut.desc')),
+                TextInput::make('icon')
+                    ->prefixIcon('heroicon-o-tag')
+                    ->prefixIconColor('secondary')
+                    ->label(__('admin.navigation.icon.label'))
+                    ->helperText(__('admin.navigation.icon.desc')),
                 Toggle::make('hot')
                     ->label(__('admin.navigation.hot.label'))
                     ->helperText(__('admin.navigation.hot.desc'))
@@ -231,11 +248,14 @@ class FilamentNavigation implements Plugin
     {
         return array_merge([
             'label' => __('admin.navigation.new_item'),
-            'type' => null,
+            'type' => 'page',
             'data' => [
-                'visible' => true,
-                'enabled' => true,
-                'hot' => false,
+                'separator' => false,
+                'icon'      => null,
+                'shortcut'  => null,
+                'visible'   => true,
+                'enabled'   => true,
+                'hot'       => false,
             ],
         ], $this->newItems);
     }
