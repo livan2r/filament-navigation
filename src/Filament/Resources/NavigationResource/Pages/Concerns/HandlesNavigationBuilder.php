@@ -134,6 +134,11 @@ trait HandlesNavigationBuilder
                             $type = $get('type');
 
                             return FilamentNavigation::get()->getItemTypes()[$type]['fields'] ?? [];
+                        })
+                        ->visible(function (Get $get) {
+                            $type = $get('type');
+
+                            return count(FilamentNavigation::get()->getItemTypes()[$type]['fields']) > 0;
                         }),
                     Section::make(__('admin.navigation.group.options.label'))
                         ->description(__('admin.navigation.group.options.desc'))
