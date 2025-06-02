@@ -200,6 +200,7 @@ class FilamentNavigation implements Plugin
                             ->native(false)
                             ->required()
                             ->options(PageService::make()->getRoutes()),
+                        // page parameters
                         Select::make('target')
                             ->label(__('admin.navigation.target.label'))
                             ->helperText(__('admin.navigation.target.desc'))
