@@ -112,22 +112,19 @@ class FilamentNavigation implements Plugin
                     ->helperText(__('admin.navigation.separator.desc'))
                     ->onIcon('heroicon-o-check')
                     ->offIcon('heroicon-o-x-mark')
-                    ->default(false)
-                    ->required(),
+                    ->default(false),
                 Toggle::make('visible')
                     ->label(__('admin.navigation.visible.label'))
                     ->helperText(__('admin.navigation.visible.desc'))
                     ->onIcon('heroicon-o-check')
                     ->offIcon('heroicon-o-x-mark')
-                    ->default(true)
-                    ->required(),
+                    ->default(true),
                 Toggle::make('enabled')
                     ->label(__('admin.navigation.enabled.label'))
                     ->helperText(__('admin.navigation.enabled.desc'))
                     ->onIcon('heroicon-o-check')
                     ->offIcon('heroicon-o-x-mark')
-                    ->default(true)
-                    ->required(),
+                    ->default(true),
                 TextInput::make('shortcut')
                     ->prefixIcon('heroicon-o-tag')
                     ->prefixIconColor('secondary')
@@ -143,8 +140,7 @@ class FilamentNavigation implements Plugin
                     ->helperText(__('admin.navigation.hot.desc'))
                     ->onIcon('heroicon-o-check')
                     ->offIcon('heroicon-o-x-mark')
-                    ->default(false)
-                    ->required(),
+                    ->default(false),
             ],
             ...$this->extraFields
         ];
@@ -211,6 +207,20 @@ class FilamentNavigation implements Plugin
                 'pulldown-menu' => [
                     'name' => __('admin.navigation.pulldown_menu'),
                     'fields' => [],
+                ],
+            ],
+            [
+                'column' => [
+                    'name' => __('admin.navigation.column.label'),
+                    'fields' => [
+                        Toggle::make('show_header')
+                            ->label(__('admin.navigation.column.variable'))
+                            ->helperText(__('admin.navigation.column.desc'))
+                            ->onIcon('heroicon-o-check')
+                            ->offIcon('heroicon-o-x-mark')
+                            ->default(true)
+                            ->required(),
+                    ],
                 ],
             ],
             [
