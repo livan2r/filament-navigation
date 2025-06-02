@@ -191,6 +191,12 @@ class FilamentNavigation implements Plugin
                 ]
             ],
             [
+                'pulldown-menu' => [
+                    'name' => __('admin.navigation.pulldown_menu'),
+                    'fields' => [],
+                ],
+            ],
+            [
                 'mega-menu' => [
                     'name' => __('admin.navigation.mega_menu.label'),
                     'fields' => [
@@ -199,10 +205,10 @@ class FilamentNavigation implements Plugin
                             ->prefixIcon('heroicon-o-cursor-arrow-rays')
                             ->prefixIconColor('secondary')
                             ->helperText(__('admin.navigation.mega_menu.desc'))
-                            ->default('')
+                            ->default('default')
                             ->preload()
                             ->native(false)
-                            ->options(__('admin.navigation.mega_menu.options')),
+                            ->options(config('lara-artisan.navigation.megamenu.templates')),
                         CuratorPicker::make('image')
                             ->label(__('admin.navigation.image.label'))
                             ->helperText(__('admin.navigation.image.desc'))
