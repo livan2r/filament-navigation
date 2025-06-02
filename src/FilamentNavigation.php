@@ -7,9 +7,11 @@ use App\Services\Page\Page as PageService;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Closure;
 use Filament\Contracts\Plugin;
+use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Set;
 use Filament\Panel;
 use Illuminate\Support\Str;
 use RyanChandler\FilamentNavigation\Filament\Resources\NavigationResource;
@@ -199,8 +201,22 @@ class FilamentNavigation implements Plugin
                             ->preload()
                             ->native(false)
                             ->required()
+                            ->afterStateUpdated(function (Set $set, ?string $state) {
+                                if ($state) {
+                                    $route = PageService::make()->find($state, false)->getRoute();
+
+                                    if (!empty($route)) {
+                                        if (isset($route['parameters']['locale'])) {
+                                            unset($route['parameters']['locale']);
+                                        }
+                                        $set('params', $route['parameters']);
+                                    }
+                                } else {
+                                    $set('params', []);
+                                }
+                            })
+                            ->reactive()
                             ->options(PageService::make()->getRoutes()),
-                        // page parameters
                         Select::make('target')
                             ->label(__('admin.navigation.target.label'))
                             ->helperText(__('admin.navigation.target.desc'))
@@ -212,6 +228,13 @@ class FilamentNavigation implements Plugin
                             ])
                             ->default('')
                             ->selectablePlaceholder(false),
+                        KeyValue::make('params')
+                            ->label(__('admin.navigation.parameters.label'))
+                            ->helperText(__('admin.navigation.parameters.desc'))
+                            ->addable(false)
+                            ->visible(fn ($state) => !empty($state))
+                            ->deletable(false)
+                            ->editableKeys(false),
                         CuratorPicker::make('image')
                             ->label(__('admin.navigation.image.label'))
                             ->helperText(__('admin.navigation.image.desc'))
@@ -291,7 +314,8 @@ class FilamentNavigation implements Plugin
                 'page_id'     => null,
                 'show_header' => true,
                 'action'      => false,
-                'mega_menu'   => null
+                'mega_menu'   => null,
+                'params'      => []
             ],
         ], $this->newItems);
     }
