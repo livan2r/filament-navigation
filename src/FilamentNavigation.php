@@ -135,6 +135,11 @@ class FilamentNavigation implements Plugin
                     ->prefixIconColor('secondary')
                     ->label(__('admin.navigation.icon.label'))
                     ->helperText(__('admin.navigation.icon.desc')),
+                TextInput::make('helpert')
+                    ->prefixIcon('heroicon-o-tag')
+                    ->prefixIconColor('secondary')
+                    ->label(__('admin.navigation.helper.label'))
+                    ->helperText(__('admin.navigation.helper.desc')),
                 Toggle::make('hot')
                     ->label(__('admin.navigation.hot.label'))
                     ->helperText(__('admin.navigation.hot.desc'))
@@ -171,6 +176,12 @@ class FilamentNavigation implements Plugin
                             ])
                             ->default('')
                             ->selectablePlaceholder(false),
+                        CuratorPicker::make('image')
+                            ->label(__('admin.navigation.image.label'))
+                            ->helperText(__('admin.navigation.image.desc'))
+                            ->color('primary')
+                            ->outlined(false)
+                            ->constrained(),
                     ],
                 ],
             ],
@@ -199,7 +210,13 @@ class FilamentNavigation implements Plugin
                                 '_blank' => __('admin.navigation.target.new-tab'),
                             ])
                             ->default('')
-                            ->selectablePlaceholder(false)
+                            ->selectablePlaceholder(false),
+                        CuratorPicker::make('image')
+                            ->label(__('admin.navigation.image.label'))
+                            ->helperText(__('admin.navigation.image.desc'))
+                            ->color('primary')
+                            ->outlined(false)
+                            ->constrained(),
                     ],
                 ]
             ],
@@ -220,6 +237,12 @@ class FilamentNavigation implements Plugin
                             ->offIcon('heroicon-o-x-mark')
                             ->default(true)
                             ->required(),
+                        Toggle::make('action')
+                            ->label(__('admin.navigation.action.label'))
+                            ->helperText(__('admin.navigation.action.desc'))
+                            ->onIcon('heroicon-o-check')
+                            ->offIcon('heroicon-o-x-mark')
+                            ->default(false),
                     ],
                 ],
             ],
@@ -236,12 +259,6 @@ class FilamentNavigation implements Plugin
                             ->preload()
                             ->native(false)
                             ->options(config('lara-artisan.navigation.megamenu.templates')),
-                        CuratorPicker::make('image')
-                            ->label(__('admin.navigation.image.label'))
-                            ->helperText(__('admin.navigation.image.desc'))
-                            ->color('primary')
-                            ->outlined(false)
-                            ->constrained(),
                     ],
                 ],
             ],
@@ -260,12 +277,14 @@ class FilamentNavigation implements Plugin
             'label' => __('admin.navigation.new_item'),
             'type' => 'page',
             'data' => [
+                'helper'   => '',
                 'separator' => false,
                 'icon'      => null,
                 'shortcut'  => null,
                 'visible'   => true,
                 'enabled'   => true,
                 'hot'       => false,
+                'image'     => null,
             ],
         ], $this->newItems);
     }
