@@ -6,6 +6,7 @@ use Filament\Actions\Action;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -118,7 +119,11 @@ trait HandlesNavigationBuilder
                         })
                         ->required()
                         ->reactive(),
-                    Group::make()
+                    Section::make(__('admin.navigation.group.data.label'))
+                        ->description(__('admin.navigation.group.data.desc'))
+                        ->collapsible(true)
+                        ->compact()
+                        ->columns(2)
                         ->statePath('data')
                         ->whenTruthy('type')
                         ->schema(function (Get $get) {
@@ -126,14 +131,18 @@ trait HandlesNavigationBuilder
 
                             return FilamentNavigation::get()->getItemTypes()[$type]['fields'] ?? [];
                         }),
-                    Group::make()
+                    Section::make(__('admin.navigation.group.options.label'))
+                        ->description(__('admin.navigation.group.options.desc'))
+                        ->collapsible(true)
+                        ->compact()
+                        ->columns(2)
                         ->statePath('data')
                         ->visible(fn (Component $component) => $component->evaluate(FilamentNavigation::get()->getExtraFields()) !== [])
                         ->schema(function (Component $component) {
                             return FilamentNavigation::get()->getExtraFields();
                         }),
                 ])
-                ->modalWidth('md')
+                ->modalWidth('3xl')
                 ->action(function (array $data) {
                     if ($this->mountedItem) {
                         data_set($this, $this->mountedItem, array_merge(data_get($this, $this->mountedItem), $data));

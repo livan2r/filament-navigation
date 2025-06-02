@@ -125,11 +125,12 @@ class FilamentNavigation implements Plugin
                     ->onIcon('heroicon-o-check')
                     ->offIcon('heroicon-o-x-mark')
                     ->default(true),
-                TextInput::make('shortcut')
-                    ->prefixIcon('heroicon-o-tag')
-                    ->prefixIconColor('secondary')
-                    ->label(__('admin.navigation.shortcut.label'))
-                    ->helperText(__('admin.navigation.shortcut.desc')),
+                Toggle::make('hot')
+                    ->label(__('admin.navigation.hot.label'))
+                    ->helperText(__('admin.navigation.hot.desc'))
+                    ->onIcon('heroicon-o-check')
+                    ->offIcon('heroicon-o-x-mark')
+                    ->default(false),
                 TextInput::make('icon')
                     ->prefixIcon('heroicon-o-tag')
                     ->prefixIconColor('secondary')
@@ -140,12 +141,11 @@ class FilamentNavigation implements Plugin
                     ->prefixIconColor('secondary')
                     ->label(__('admin.navigation.helper.label'))
                     ->helperText(__('admin.navigation.helper.desc')),
-                Toggle::make('hot')
-                    ->label(__('admin.navigation.hot.label'))
-                    ->helperText(__('admin.navigation.hot.desc'))
-                    ->onIcon('heroicon-o-check')
-                    ->offIcon('heroicon-o-x-mark')
-                    ->default(false),
+                TextInput::make('shortcut')
+                    ->prefixIcon('heroicon-o-tag')
+                    ->prefixIconColor('secondary')
+                    ->label(__('admin.navigation.shortcut.label'))
+                    ->helperText(__('admin.navigation.shortcut.desc')),
             ],
             ...$this->extraFields
         ];
