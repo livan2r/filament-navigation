@@ -41,6 +41,7 @@ trait HandlesNavigationBuilder
     public function addChild(string $statePath)
     {
         $this->mountedChildTarget = $statePath;
+        $this->mountedItemData = FilamentNavigation::get()->getNewItemData();
 
         $this->mountAction('item');
     }
