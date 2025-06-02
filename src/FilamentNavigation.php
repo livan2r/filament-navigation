@@ -277,7 +277,7 @@ class FilamentNavigation implements Plugin
             'label' => __('admin.navigation.new_item'),
             'type' => 'page',
             'data' => [
-                'helper'   => '',
+                'helper'    => '',
                 'separator' => false,
                 'icon'      => null,
                 'shortcut'  => null,
@@ -285,6 +285,9 @@ class FilamentNavigation implements Plugin
                 'enabled'   => true,
                 'hot'       => false,
                 'image'     => null,
+                'url'       => null,
+                'target'    => null,
+                'page_id'   => null,
             ],
         ], $this->newItems);
     }

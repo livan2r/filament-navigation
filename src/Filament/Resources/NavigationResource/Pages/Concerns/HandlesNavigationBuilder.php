@@ -61,6 +61,10 @@ trait HandlesNavigationBuilder
     {
         $this->mountedItem = $statePath;
         $this->mountedItemData = Arr::except(data_get($this, $statePath), 'children');
+        $this->mountedItemData['data'] = array_merge(
+            FilamentNavigation::get()->getNewItemData()['data'],
+            $this->mountedItemData['data'],
+        );
 
         $this->mountAction('item');
     }
@@ -104,7 +108,7 @@ trait HandlesNavigationBuilder
                             return array_combine(array_keys($types), Arr::pluck($types, 'name'));
                         })
                         ->afterStateUpdated(function ($state, Select $component): void {
-                            if (! $state) {
+                            if (! $state || !empty($component->getContainer())) {
                                 return;
                             }
 
