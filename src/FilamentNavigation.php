@@ -138,7 +138,7 @@ class FilamentNavigation implements Plugin
                     ->prefixIconColor('secondary')
                     ->label(__('admin.navigation.icon.label'))
                     ->helperText(__('admin.navigation.icon.desc')),
-                TextInput::make('helpert')
+                TextInput::make('helper')
                     ->prefixIcon('heroicon-o-tag')
                     ->prefixIconColor('secondary')
                     ->label(__('admin.navigation.helper.label'))
