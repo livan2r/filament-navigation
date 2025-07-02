@@ -3,8 +3,10 @@
 return [
     'attributes' => [
         'external-link' => 'External link',
+        'action' => 'Action',
         'url' => 'URL',
         'url-helper' => 'The URL that the navigation item will link to.',
+        'action-helper' => 'The action key to trigger.',
         'target' => 'Target',
         'target-helper' => 'Select where the link should be opened.',
         'name' => 'Name',
@@ -18,7 +20,8 @@ return [
 
     'select-options' => [
         'same-tab' => 'Same tab',
-        'new-tab' => 'New tab'
+        'new-tab' => 'New tab',
+        'popup' => 'Popup',
     ],
 
     'items' => [

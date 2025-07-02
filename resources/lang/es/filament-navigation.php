@@ -3,8 +3,10 @@
 return [
     'attributes' => [
         'external-link' => 'Vínculo externo',
+        'action' => 'Acción',
         'url' => 'URL',
         'url-helper' => 'La URL a la que se vinculará el ítem de navegación.',
+        'action-helper' => 'La llave de la acción a llamar.',
         'target' => 'Destino',
         'target-helper' => 'Seleccione dónde se debe abrir el vínculo.',
         'name' => 'Nombre',
@@ -18,7 +20,8 @@ return [
 
     'select-options' => [
         'same-tab' => 'Misma pestaña',
-        'new-tab' => 'Nueva pestaña'
+        'new-tab' => 'Nueva pestaña',
+        'popup' => 'Popup',
     ],
 
     'items' => [

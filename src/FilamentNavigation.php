@@ -187,6 +187,30 @@ class FilamentNavigation implements Plugin
                     ],
                 ],
             ],
+            [
+                'action' => [
+                    'name' => __('filament-navigation::filament-navigation.attributes.action'),
+                    'fields' => [
+                        TextInput::make('action')
+                            ->prefixIcon('heroicon-o-globe-alt')
+                            ->prefixIconColor('secondary')
+                            ->default('')
+                            ->label(__('filament-navigation::filament-navigation.attributes.action'))
+                            ->helperText(__('filament-navigation::filament-navigation.attributes.action-helper'))
+                            ->required(),
+                        Select::make('target')
+                            ->prefixIcon('heroicon-o-cursor-arrow-rays')
+                            ->prefixIconColor('secondary')
+                            ->label(__('filament-navigation::filament-navigation.attributes.target'))
+                            ->helperText(__('filament-navigation::filament-navigation.attributes.target-helper'))
+                            ->options([
+                                '_popup' => __('filament-navigation::filament-navigation.select-options.popup'),
+                            ])
+                            ->default('_popup')
+                            ->selectablePlaceholder(false),
+                    ],
+                ],
+            ],
             // FIXME: Translations doesn't work for these options
             [
                 'page' => [
