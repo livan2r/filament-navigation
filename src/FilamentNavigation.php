@@ -306,7 +306,7 @@ class FilamentNavigation implements Plugin
                             ->default('default')
                             ->preload()
                             ->native(false)
-                            ->options(config('lara-artisan.navigation.megamenu.templates')),
+                            ->options(config('larartifact.navigation.megamenu.templates')),
                     ],
                 ],
             ],
